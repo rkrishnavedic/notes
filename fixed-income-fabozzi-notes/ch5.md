@@ -1,3 +1,177 @@
+## 🧱 1. Core Pricing Equation
+
+### Arbitrage-Free Form (Term Structure)
+
+$$
+P = \sum_{t=1}^{T} \frac{CF_t}{(1 + r_t)^t}
+$$
+
+- $CF_t$ = cashflow at time $t$
+- $r_t$ = spot rate for maturity $t$
+
+---
+
+### YTM Approximation
+
+$$
+P = \sum_{t=1}^{T} \frac{C}{(1+i)^t} + \frac{M}{(1+i)^T}
+$$
+
+- $i$ = yield to maturity
+
+👉 Used for quoting, not true pricing
+
+---
+
+## 🔍 2. Yield (YTM)
+
+Defined implicitly:
+
+$$
+P_{\text{market}} = P_{\text{model}}(i)
+$$
+
+---
+
+### Root-Finding Form
+
+$$
+f(i) = P_{\text{model}}(i) - P_{\text{market}} = 0
+$$
+
+---
+
+### Properties:
+- Nonlinear equation  
+- No closed-form solution  
+- Requires numerical methods  
+
+---
+
+### ⚠️ YTM Assumptions
+
+- Flat yield curve  
+- Reinvestment at $i$  
+- Hold to maturity  
+
+👉 Hence: not a true return measure
+
+---
+
+## 📉 3. Price–Yield Relationship
+
+$$
+\frac{dP}{di} < 0, \quad \frac{d^2P}{di^2} > 0
+$$
+
+---
+
+### Interpretation:
+- Price decreases as yield increases  
+- Relationship is convex (nonlinear)  
+
+---
+
+## 🧩 4. Special Cases
+
+### Zero-Coupon Bond
+
+$$
+P = \frac{M}{(1+i)^T}
+$$
+
+---
+
+### Perpetuity
+
+$$
+P = \frac{C}{i}
+$$
+
+---
+
+### Relative Pricing
+
+- $C > i \Rightarrow P > M$ (Premium)  
+- $C < i \Rightarrow P < M$ (Discount)  
+- $C = i \Rightarrow P = M$ (Par)  
+
+---
+
+## 💰 5. Clean vs Dirty Price
+
+$$
+P_{\text{dirty}} = P_{\text{clean}} + AI
+$$
+
+$$
+AI = C \cdot \frac{\text{Time Elapsed}}{\text{Coupon Period}}
+$$
+
+---
+
+### Insight:
+- Models compute dirty price  
+- Market quotes clean price  
+
+---
+
+## 🔄 6. Return Insight
+
+$$
+\text{Return} \neq \text{YTM}
+$$
+
+---
+
+### Reason:
+- Reinvestment rate ≠ YTM  
+- Holding period may differ  
+
+---
+
+## 🔥 7. Critical Quant Insights
+
+### 1. Bond = Sum of Zero-Coupon Bonds
+Each cashflow discounted separately
+
+---
+
+### 2. Price → Yield
+Yield is implied from price
+
+---
+
+### 3. Bond = Function
+
+$$
+P = P(i)
+$$
+
+→ enables differentiation → risk
+
+---
+
+### 4. Pull-to-Par
+
+If $i$ constant:
+
+$$
+P \to M \quad \text{as } t \to T
+$$
+
+---
+
+### 5. Convexity Exists
+Second-order effects matter
+
+---
+
+## 🚀 ONE-LINE
+
+Bond = discounted cashflows (term structure) with yield as IRR approximation
+---
+# Book Summary
 ### **1. CORE PRICING FRAMEWORK**
 *   **Main Equation (General DCF):** $P = \sum_{t=1}^{n} \frac{c}{(1+i)^t} + \frac{M}{(1+i)^n}$.
 *   **Variable Definitions:**
