@@ -1,3 +1,224 @@
+## 🧱 1. Core Framework
+
+Bond price is a function of multiple risk factors:
+
+$$
+P = f(r_1, r_2, ..., r_T; s; \sigma; CF)
+$$
+
+- $r_t$ = spot rates (yield curve)
+- $s$ = credit spread
+- $\sigma$ = volatility (for optionality)
+- $CF$ = cashflows (possibly stochastic)
+
+---
+
+### Risk Definition
+
+Risk = sensitivity of price to inputs:
+
+$$
+\frac{\partial P}{\partial r_t}, \quad \frac{\partial^2 P}{\partial r_t^2}, \quad \frac{\partial P}{\partial s}
+$$
+
+---
+
+## 📉 2. Interest Rate Risk (Duration)
+
+### Definition
+
+$$
+D = -\frac{1}{P} \frac{dP}{dy}
+$$
+
+---
+
+### First-Order Approximation
+
+$$
+\frac{\Delta P}{P} \approx -D \Delta y
+$$
+
+---
+
+### Insight
+
+- Measures price sensitivity to yield  
+- Increases with maturity  
+- Decreases with coupon  
+
+---
+
+## 📈 3. Convexity (Second-Order Risk)
+
+### Definition
+
+$$
+C = \frac{1}{P} \frac{d^2P}{dy^2}
+$$
+
+---
+
+### Approximation
+
+$$
+\frac{\Delta P}{P} \approx -D \Delta y + \frac{1}{2} C (\Delta y)^2
+$$
+
+---
+
+### Insight
+
+- Captures nonlinearity  
+- Improves large-move estimates  
+- Positive for option-free bonds  
+
+---
+
+## 🔗 4. Yield Curve Risk
+
+### Multi-Factor Pricing
+
+$$
+P = \sum_{t=1}^{T} \frac{CF_t}{(1 + r_t)^t}
+$$
+
+---
+
+### Interpretation
+
+- Each maturity has its own rate  
+- Risk comes from:
+  - parallel shifts  
+  - twists  
+  - curvature changes  
+
+---
+
+### Quant View
+
+$$
+P = P(r_1, r_2, ..., r_T)
+$$
+
+---
+
+## 🔄 5. Reinvestment Risk
+
+### Future Value of Coupons
+
+$$
+FV = \sum_{t=1}^{h} C (1 + r_t)^{h-t}
+$$
+
+---
+
+### Insight
+
+- Depends on future interest rates  
+- Drives difference between:
+  - YTM  
+  - realized return  
+
+---
+
+## 🔁 6. Embedded Option Risk
+
+### Callable Bond
+
+$$
+P_{callable} = P_{straight} - P_{option}
+$$
+
+---
+
+### Effects
+
+- Cashflows become stochastic  
+- Duration becomes unstable  
+- Convexity can become negative  
+
+---
+
+### Modeling
+
+- Use effective duration  
+- Requires interest rate models  
+
+---
+
+## ⚠️ 7. Credit Risk
+
+### Expected Cashflow
+
+$$
+E[CF_t] = CF_t (1 - PD) + RR \cdot M \cdot PD
+$$
+
+---
+
+### Spread Decomposition
+
+$$
+y = r + s
+$$
+
+---
+
+### Risk
+
+- Spread widening → price falls  
+
+---
+
+## 💧 8. Liquidity Risk
+
+### Proxy
+
+$$
+\text{Spread} = \text{Ask} - \text{Bid}
+$$
+
+---
+
+### Insight
+
+- Cost of execution  
+- Observed price ≠ theoretical price  
+
+---
+
+## 🔥 9. Critical Quant Insights
+
+### 1. Risk = Derivatives of Price
+All risks reduce to sensitivities
+
+---
+
+### 2. Duration ≈ First Derivative
+Convexity ≈ Second Derivative
+
+---
+
+### 3. Multi-Factor Reality
+Rates are not one variable
+
+---
+
+### 4. Optionality Breaks Linearity
+Cashflows become path-dependent
+
+---
+
+### 5. Return ≠ Yield
+Reinvestment risk drives divergence
+
+---
+
+## 🚀 ONE-LINE
+
+Risk = sensitivity of bond price to yield curve, credit, volatility, and liquidity factors
+---
 # Book Summary
 For a fixed-income quantitative strategist, risk is the **sensitivity of the price function** to stochastic and deterministic market inputs.
 
@@ -11,14 +232,14 @@ For a fixed-income quantitative strategist, risk is the **sensitivity of the pri
 ### **2. INTEREST RATE RISK**
 *   **Mathematical Interpretation:** Duration—the approximate percentage change in price for a 100 basis point change in yields.
 *   **Duration Estimation:** $D = \frac{V_- - V_+}{2V_0(\Delta y)}$.
-*   **First-Order Approximation:** $\frac{\Delta P}{P} \approx -D \times \Delta y \times 100$.
+*   **First-Order Approximation:** $\frac{\Delta P}{P} \approx -D \times \Delta y$.
 *   **Pricing Impact:** Market value moves in the opposite direction of rate changes.
 
 ---
 
 ### **3. SECOND-ORDER EFFECT (CONVEXITY)**
 *   **Second Derivative:** $C = \frac{V_- + V_+ - 2V_0}{2V_0(\Delta y)^2}$.
-*   **Improved Approximation:** $\frac{\Delta P}{P} \approx [-D \times \Delta y] + [C \times (\Delta y)^2]$.
+*   **Improved Approximation:** $\frac{\Delta P}{P} \approx [-D \times \Delta y] + [\frac{1}{2}C \times (\Delta y)^2]$.
 *   **Mathematical Necessity:** The relationship is nonlinear (convex); duration alone systematically underestimates the new price for large yield changes.
 
 ---
@@ -45,7 +266,7 @@ For a fixed-income quantitative strategist, risk is the **sensitivity of the pri
 ---
 
 ### **7. CREDIT RISK (BASIC)**
-*   **Expected Cash Flow:** $E[CF_t] = CF_t(1 - PD) + CF_t(PD)(RR)$, where $PD$ is probability of default and $RR$ is recovery rate.
+*   **Expected Cash Flow:** $E[CF_t] = CF_t(1 - PD) + M(PD)(RR)$, where $PD$ is probability of default and $RR$ is recovery rate.
 *   **Spread Sensitivity:** $Spread = Base Rate + Risk Premium$.
 *   **Credit Spread Risk:** The risk that the market demands a higher spread due to perceived default probability or rating agency downgrades.
 
