@@ -218,6 +218,10 @@ Reinvestment risk drives divergence
 ## 🚀 ONE-LINE
 
 Risk = sensitivity of bond price to yield curve, credit, volatility, and liquidity factors
+
+## Minute Notes:
+- Nominal = quoted (inflation-included), Notional = principal amount
+- Inflation risk = uncertainty in real discount rate, reducing real value of fixed nominal cashflows.
 ---
 # Book Summary
 For a fixed-income quantitative strategist, risk is the **sensitivity of the price function** to stochastic and deterministic market inputs.
@@ -276,7 +280,7 @@ For a fixed-income quantitative strategist, risk is the **sensitivity of the pri
 *   **Execution Cost:** The wedge between observed theoretical price and the price at which an investor must sell.
 *   **Mathematical Proxy:** The **Bid-Ask Spread**.
 *   **Market Spread:** $Lowest Ask - Highest Bid$.
-
+* Mark-to-market pricing depends on observable market prices, but for illiquid bonds, prices are often estimated using dealer quotes or models, introducing uncertainty and dispersion. Liquidity risk therefore manifests as both execution cost and ambiguity in true valuation, making observed prices potentially unreliable and artificially smooth.
 ---
 
 ### **9. WHAT TO IGNORE**
