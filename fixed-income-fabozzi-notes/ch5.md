@@ -170,6 +170,20 @@ Second-order effects matter
 ## 🚀 ONE-LINE
 
 Bond = discounted cashflows (term structure) with yield as IRR approximation
+
+## Minute Notes:
+- When cashflows depend on future rates, borrower behavior, or embedded options, bond valuation becomes a stochastic expectation problem rather than deterministic discounting. Uncertainty enters through cashflows ($CF_t$), not just discount rates ($r_t$).
+- While practitioners often discount all cash flows using a single yield (YTM), the correct theoretical framework treats a bond as a portfolio of zero-coupon bonds, where each cash flow is discounted using its corresponding spot rate, reflecting the term structure of interest rates.
+- With constant yields, bond prices converge to par over time (pull-to-par): discount bonds rise and premium bonds fall, while price changes in general are driven by yield movements, credit spreads, time decay, and embedded optionality.
+- When a bond is priced between coupon dates, cash flows are discounted using fractional periods, with the first payment occurring at time 𝑤 the resulting present value is the dirty price, from which accrued interest—representing the seller’s earned portion of the next coupon is subtracted to obtain the quoted clean price.
+- - Only 3 things matter:
+  - Fractional discounting (t−1+w)
+  - AI=linear accrual
+  - Dirty=Clean+AI
+- Accrued interest is calculated linearly because it represents the proportional earning of a fixed coupon over time, independent of discounting, which is applied separately to determine the bond’s present value (dirty price).
+- - PV gives the dirty price because the buyer is entitled to the full next coupon, while accrued interest compensates the seller for the fraction of that coupon earned during their holding period.
+- 
+
 ---
 # Book Summary
 ### **1. CORE PRICING FRAMEWORK**
