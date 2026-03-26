@@ -79,5 +79,3 @@ By the end of these notes, you will distinguish between promised yields and real
 3.  **TWR** is for judging the strategy/manager; **MWR** is for judging the account's actual growth.
 4.  **Dirty Price** (Market Value + Accrued) is the only correct basis for calculating returns; ignoring accruals creates artificial volatility.
 5.  Realized return is **path-dependent**; the timing of rate changes matters as much as the magnitude.
-
-Does the mathematical distinction between geometric linking (TWR) and the root-finding of the IRR (MWR) make sense for your P&L models, or should we look at how **Modified Dietz** approximates these values?
