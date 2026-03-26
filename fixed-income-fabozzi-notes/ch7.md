@@ -70,4 +70,3 @@ Strategists focus on **curve positioning** (e.g., "Barbells" vs. "Bullets") to o
 4.  Alpha is extracted from the deviation of reality from the forward curve's implied path.
 5.  An upward-sloping curve provides returns through carry and rolldown even if the curve remains static.
 
-Does the mathematical derivation of **forward rates as break-evens** make sense for your pricing models, or should we move on to the **Duration and Convexity** derivations in Chapter 9?
