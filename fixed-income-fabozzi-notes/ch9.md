@@ -28,10 +28,10 @@ By the end of these notes, you will understand how to approximate the nonlinear 
 ## 4. DURATION (FIRST-ORDER RISK)
 *   **Definition:** The approximate percentage change in value for a 100 basis point change in rates.
 *   **Estimation Formula:**
-    $ D = \frac{V_- - V_+}{2V_0(\Delta y)} $
+    $D = \frac{V_- - V_+}{2V_0(\Delta y)}$
     *(Where $V_-$ and $V_+$ are prices after a downward and upward yield shift, respectively)*.
 *   **Linear Approximation:**
-    $ \frac{\Delta P}{P} \approx -D \cdot \Delta y $
+    $\frac{\Delta P}{P} \approx -D \cdot \Delta y$
     *(Where $\Delta y$ is the change in yield in decimal)*.
 *   **Interpretation:** Geometrically, duration is the negative slope of the tangent line to the price-yield curve at the current yield level.
 
@@ -47,9 +47,9 @@ By the end of these notes, you will understand how to approximate the nonlinear 
 ## 6. CONVEXITY (SECOND-ORDER RISK)
 *   **Correction Term:** Duration alone underestimates the new price because it uses a straight line to approximate a curve.
 *   **Estimation Formula:**
-    $ C = \frac{V_- + V_+ - 2V_0}{2V_0(\Delta y)^2} $.
+    $C = \frac{V_- + V_+ - 2V_0}{2V_0(\Delta y)^2}$.
 *   **Improved Approximation (Second-Order Taylor):**
-    $ \frac{\Delta P}{P} \approx -D \cdot \Delta y + \frac{1}{2} C \cdot (\Delta y)^2 $.
+    $\frac{\Delta P}{P} \approx -D \cdot \Delta y + \frac{1}{2} C \cdot (\Delta y)^2$.
 *   **Interpretation:** Positive convexity is a structural advantage; it causes a bond to gain more in rallies than it loses in equal-sized sell-offs.
 
 ---
@@ -57,7 +57,7 @@ By the end of these notes, you will understand how to approximate the nonlinear 
 ## 7. DV01 / PV01 (CRITICAL DESK METRIC)
 *   **Definition:** The **Dollar Value of an 01** (or PV01) is the absolute dollar change in price for a 1 basis point change in yield.
 *   **Mathematical Relation:**
-    $ DV01 = \text{Initial Price} \cdot \text{Duration} \cdot 0.0001 $.
+    $DV01 = \text{Initial Price} \cdot \text{Duration} \cdot 0.0001$.
 *   **Trader Logic:** In the heat of trading, desks manage dollar-at-risk (DV01) rather than percentage sensitivities.
 
 ---
@@ -71,7 +71,7 @@ By the end of these notes, you will understand how to approximate the nonlinear 
 ## 9. YIELD VOLATILITY (IMPORTANT)
 *   **The Missing Link:** A bond with high duration but low yield volatility may be less "risky" than a low-duration bond in a volatile market.
 *   **Quant Relationship:**
-    $ \text{Interest Rate Risk} \propto \text{Price Sensitivity (Duration)} \times \text{Yield Volatility} $.
+    $\text{Interest Rate Risk} \propto \text{Price Sensitivity (Duration)} \times \text{Yield Volatility}$.
 *   **Example:** A 10-year Swiss bond has higher duration but lower total risk than a 10-year US Treasury due to vastly lower yield volatility.
 
 ---
@@ -85,14 +85,14 @@ By the end of these notes, you will understand how to approximate the nonlinear 
 
 ## 11. CONNECTION TO P&L
 *   **Daily P&L Attribution:**
-    $ \Delta \text{Price} \approx -(\text{DV01} \times 10,000 \times \Delta y) + (\text{Convexity Effect}) $
+    $\Delta \text{Price} \approx -(\text{DV01} \times 10,000 \times \Delta y) + (\text{Convexity Effect})$
 *   **Desk Decomposition:** Risk reports decompose the day's P&L into "Delta" (duration move), "Gamma" (convexity effect), and "Theta" (carry/time decay).
 
 ---
 
 ## 12. DESK APPLICATION
 *   **Contribution to Duration:** Portfolio risk is the weighted average of component durations.
-    $ \text{Contribution} = \text{Weight}_i \cdot \text{Duration}_i $.
+    $\text{Contribution} = \text{Weight}_i \cdot \text{Duration}_i$.
 *   **Risk Aggregation:** Managers compare their portfolio's sector contributions to a benchmark index to identify relative risk bets.
 
 ---
