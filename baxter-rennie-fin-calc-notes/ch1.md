@@ -143,3 +143,100 @@ Expectation:
 - uses $\mu$
 
 They are fundamentally different objects.
+---
+
+## Why probability theory is still needed
+
+---
+
+### 1. Arbitrage gives structure, not numbers
+
+No-arbitrage tells you:
+
+- prices must be consistent
+- replication must exist
+- there is a unique “fair price”
+
+But it does NOT tell you directly:
+- what the price is in complex situations
+- how to compute it efficiently
+
+---
+
+### 2. Replication becomes dynamic
+
+For simple cases (like forwards):
+- replication is trivial
+- one trade at time 0 is enough
+
+For options:
+- replication requires continuous rebalancing
+- hedge ratios change with time and price
+
+So you need a model for:
+- how $S_t$ evolves
+
+---
+
+### 3. This is where stochastic processes enter
+
+We model the stock as:
+- a random process (e.g. Brownian motion)
+
+This lets us:
+- describe all possible paths of $S_t$
+- compute how hedging strategies behave over time
+
+---
+
+### 4. Risk-neutral expectation (key bridge)
+
+Arbitrage implies:
+
+> there exists a probability measure under which discounted prices are martingales
+
+Under this measure:
+
+$$ \text{Price} = \mathbb{E}^{\mathbb{Q}}[\text{payoff discounted at } r] $$
+
+This is where expectation comes back — but:
+- not with $\mu$
+- with $r$
+
+---
+
+### 5. Why this is powerful
+
+Instead of explicitly constructing hedges, we can:
+
+- switch to risk-neutral world
+- compute expectations
+
+This is much easier mathematically for complex derivatives.
+
+---
+
+### 6. Role of stochastic calculus
+
+Needed to:
+- define continuous-time trading
+- handle Brownian motion
+- apply Ito’s lemma
+- derive PDEs (e.g. Black–Scholes)
+
+---
+
+### 7. Final picture
+
+- Arbitrage → tells you **what must be true**
+- Probability → gives a **language to compute it**
+- Stochastic calculus → makes it **work in continuous time**
+
+---
+
+### Bottom line
+
+Markets enforce prices.
+
+But to *calculate* those prices in realistic models,  
+you need probability and stochastic calculus.
