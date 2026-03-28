@@ -1,105 +1,145 @@
-### 🔑 Core Principle
-> **Prices are determined by arbitrage, NOT by expectations.**
+## Pricing vs Expectation
 
 ---
 
-### ⚖️ Two Competing Views
+### 1. Arbitrage
 
-- **Expectation-based (wrong for pricing):**
-  - Uses real-world drift $\( \mu \)$
-  - Based on beliefs about future growth
-  - Example: $\( S_0 e^{(\mu + \tfrac{1}{2}\sigma^2)T} \)$
+Start with a simple idea:
 
-- **Arbitrage-free (correct):**
-  - Uses risk-free rate $\( r \)$
-  - Based on replication and tradable strategies
-  - Example: $\( S_0 e^{rT} \)$
+If there is a way to make money with:
+- zero initial cost
+- no risk
 
----
+then the market is inconsistent.
 
-### 💥 Key Insight
-
-> Even if $\( \mu > r \)$, **forward prices do NOT depend on $\( \mu \)$**
-
-- Expected return ≠ pricing input  
-- Beliefs ≠ enforceable market prices  
+So we impose:
+> no-arbitrage
 
 ---
 
-### 🔒 “Enforced Price” Meaning
+From this, we construct a strategy:
 
-- If price ≠ arbitrage-free price:
-  - Traders exploit it immediately
-  - Riskless profit opportunity appears
-- Therefore:
-  > **Only arbitrage-free price can survive in the market**
+- borrow $S_0$
+- buy the stock
+- hold until $T$
 
----
+At time $T$:
+- repay loan = $S_0 e^{rT}$
+- deliver stock
 
-### 🧠 Deep Intuition
+This strategy is **riskless**.
 
-- $\( \mu \)$ → subjective (depends on model, beliefs)
-- $\( r \)$ → objective (locked by trading strategies)
+So any forward contract must have the same cost.
 
-> **Markets eliminate opinions, but enforce arbitrage.**
+Otherwise:
+- if forward price is lower → seller arbitrage  
+- if higher → buyer arbitrage  
 
----
+Hence:
+$$F = S_0 e^{rT}$$
 
-### 🚀 Quant Mental Model
-
-- Pricing = **No-Arbitrage + Replication**
-- NOT = Expectation / Forecasting
-
----
-
-### ⚡ One-Liner
-
-> “If an arbitrage price exists, any other price is too dangerous to quote.”
-
----
-## 📌 Essence: Expectation vs Arbitrage
-
-### 🔑 Core Shift
-> **Expectation (μ) fails for pricing derivatives → Arbitrage + replication takes over**
+This is an **enforced price** — it comes from the existence of a replicating strategy.
 
 ---
 
-### ❌ Why Expectation Fails
-- Works for simple products (e.g., forwards)
-- Breaks for **nonlinear payoffs** (e.g., options)
-- Cannot replicate options by “buy and hold”
+### 2. Expectation vs Arbitrage (Section 1.2 insight)
+
+A natural thought is:
+
+“Stock grows on average at $\mu$, so price should be related to that.”
+
+This leads to:
+$$S_0 e^{(\mu + \tfrac{1}{2}\sigma^2)T}$$
+
+This comes from:
+- expectation
+- strong law type reasoning
+
+But this is not usable for pricing.
+
+Why?
+
+Because:
+- $\mu$ is not tradable
+- $\mu$ is subjective
+- different agents have different $\mu$
+
+So it cannot pin down a unique price.
 
 ---
 
-### ⚙️ What Replaces It
-- **Replication strategies** (dynamic trading)
-- **No-arbitrage principle**
-- Prices determined by **constructing the payoff**
+### 3. Breakdown of Expectation
+
+Expectation-based thinking works for simple cases like forwards (coincidentally).
+
+But it fails for derivatives like options.
+
+Reason:
+- options have nonlinear payoffs
+- cannot be replicated by “buy and hold”
+
+So pricing cannot come from:
+> “what do I expect $S_T$ to be?”
+
+Instead it must come from:
+> “can I replicate the payoff using tradable assets?”
 
 ---
 
-### 🧠 Role of Expectation (Subtle Point)
-> Expectation is NOT discarded — it is reinterpreted
+### 4. Role of Expectation (important subtlety)
 
-- Used later as:
-  - **Risk-neutral expectation**
-- Not based on real-world drift \( \mu \), but on \( r \)
+Expectation is not discarded.
 
----
+It comes back later as:
+> risk-neutral expectation
 
-### 📉 Historical Insight
-- Pre-1973: Pricing via expectation seemed reasonable  
-- Post-Black–Scholes: Arbitrage framework dominates  
+But:
+- not using $\mu$
+- using $r$ instead
 
----
-
-### 🧩 Big Structural Idea
-> **All derivatives can be replicated using underlying + cash**
-
-→ Therefore:
-> **Price = cost of replication**
+This is derived from arbitrage, not assumed.
 
 ---
 
-### ⚡ One-Liner
-> “We don’t price by predicting outcomes, we price by eliminating arbitrage.”
+### 5. What is actually being priced
+
+We are not trying to estimate $S_T$.
+
+We are computing:
+
+> the cost today of constructing a strategy that delivers the same payoff
+
+That cost determines the price.
+
+---
+
+### 6. Final clarity (forward price)
+
+There are two candidates:
+
+- from expectation: $S_0 e^{(\mu + \tfrac{1}{2}\sigma^2)T}$  
+- from arbitrage:   $S_0 e^{rT}$
+
+Correct one:
+
+$$F = S_0 e^{rT}$$
+
+because:
+- it comes from a replicating strategy
+- it is enforceable in the market
+
+---
+
+### 7. Bottom line
+
+Pricing:
+- based on replication
+- enforced by arbitrage
+- uses $r$
+
+Expectation:
+- based on beliefs
+- not enforceable
+- uses $\mu$
+
+They are fundamentally different objects.
