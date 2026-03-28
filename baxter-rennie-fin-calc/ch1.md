@@ -55,3 +55,51 @@
 ### ⚡ One-Liner
 
 > “If an arbitrage price exists, any other price is too dangerous to quote.”
+
+---
+## 📌 Essence: Expectation vs Arbitrage
+
+### 🔑 Core Shift
+> **Expectation (μ) fails for pricing derivatives → Arbitrage + replication takes over**
+
+---
+
+### ❌ Why Expectation Fails
+- Works for simple products (e.g., forwards)
+- Breaks for **nonlinear payoffs** (e.g., options)
+- Cannot replicate options by “buy and hold”
+
+---
+
+### ⚙️ What Replaces It
+- **Replication strategies** (dynamic trading)
+- **No-arbitrage principle**
+- Prices determined by **constructing the payoff**
+
+---
+
+### 🧠 Role of Expectation (Subtle Point)
+> Expectation is NOT discarded — it is reinterpreted
+
+- Used later as:
+  - **Risk-neutral expectation**
+- Not based on real-world drift \( \mu \), but on \( r \)
+
+---
+
+### 📉 Historical Insight
+- Pre-1973: Pricing via expectation seemed reasonable  
+- Post-Black–Scholes: Arbitrage framework dominates  
+
+---
+
+### 🧩 Big Structural Idea
+> **All derivatives can be replicated using underlying + cash**
+
+→ Therefore:
+> **Price = cost of replication**
+
+---
+
+### ⚡ One-Liner
+> “We don’t price by predicting outcomes, we price by eliminating arbitrage.”
